@@ -1,5 +1,4 @@
-"""
-Processor module for stock-backtest-beta signal generation.
+"""Processor module for stock-backtest-beta signal generation.
 
 Validates incoming messages and computes beta signals based on
 historical price data. All operations are logged for observability.
@@ -15,8 +14,7 @@ logger = setup_logger(__name__)
 
 
 def validate_input_message(message: dict[str, Any]) -> ValidatedMessage:
-    """
-    Validate the incoming raw message against the expected schema.
+    """Validate the incoming raw message against the expected schema.
 
     Args:
         message (dict[str, Any]): The raw message payload.
@@ -26,6 +24,7 @@ def validate_input_message(message: dict[str, Any]) -> ValidatedMessage:
 
     Raises:
         ValueError: If the message format is invalid.
+
     """
     logger.debug("🔍 Validating message schema...")
     if not validate_message_schema(message):
@@ -35,8 +34,7 @@ def validate_input_message(message: dict[str, Any]) -> ValidatedMessage:
 
 
 def compute_beta_signal(message: ValidatedMessage) -> dict[str, Any]:
-    """
-    Compute a beta signal from the validated input message.
+    """Compute a beta signal from the validated input message.
 
     Placeholder implementation. A real version would use historical
     correlation and variance vs. a benchmark (e.g., S&P 500).
@@ -46,6 +44,7 @@ def compute_beta_signal(message: ValidatedMessage) -> dict[str, Any]:
 
     Returns:
         dict[str, Any]: The enriched message with beta signal.
+
     """
     symbol = message.get("symbol", "UNKNOWN")
     logger.info("📈 Computing beta signal for %s", symbol)
